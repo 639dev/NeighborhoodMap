@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="js/knockout.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
+   <div class="container-fluid">
+
+    <div class="row row1">
+      <div class="col-md-12">
+        <div class="toggle-btn fas fa-bars" onclick="toggleSideBar()">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4" id="sidebar">
+        <h5 style="color: white">My Locations</h5>
+          <input type="text" size="18.5">
+          <ul data-bind="foreach: places">
+              <li><a href="#" data-bind="text: name" class="places-links"></a></li>
+          </ul>
+      </div>
+
+      <div class="col-md-12">
+        <div id="map"></div>
+      </div>
+    </div>
+
+   </div>
+    
+    <script>   
+    var sidebar = document.getElementById('sidebar');
+    function toggleSideBar() {
+      sidebar.classList.toggle('open');
+    }
+
+    // mmenuuuuuuuuuu
+    function Place(name,lat,lng) {
+      var self = this;
+      self.name = name;
+      self.lat = lat;
+      self.lng = lng;
+    }
+
+    // Overall viewmodel for this screen, along with initial state
+    function PlaceViewModel() {
+      var self = this;  
+
+      // Editable data
+      self.places = ko.observableArray([
+          new Place('Centeria Mall',24.698415, 46.683869),
+          new Place('Kingdom Tower',24.7114, 46.6744),
+          new Place('Burger Boutique',24.703426, 46.678498),
+          new Place('Jarir Bookstore',24.702556, 46.680667),
+          new Place('Aqariyah Plaza',24.708017, 46.678737)
+      ]);
+    }
+
+    ko.applyBindings(new PlaceViewModel());
+    </script>
+
+ 
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAfvIdEa3j5W7gRzRzEYnVMp6RMzlqmEAY&callback=initMap">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
