@@ -1,6 +1,10 @@
 
       var map;
       var markers = [];
+      var x = document.getElementsByClassName('places-links');
+      var marker;
+
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
@@ -43,7 +47,7 @@
           var position = viewModel.locations()[i].location;
           var title = viewModel.locations()[i].title;
           //create marker per location,then put in markers array
-          var marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
             position: position,
             map: map,
             title: title,
@@ -51,6 +55,8 @@
             animation: google.maps.Animation.DROP,
             id: i
           });
+
+
           //push marker to the array
           markers.push(marker);
           // Extend the boundries of the map for each marker
@@ -67,6 +73,17 @@
           google.maps.event.addListener(marker,'mouseout', function(){
             this.setIcon(defaultIcon);
           });
+
+          //https://blog.dmbcllc.com/why-does-javascript-loop-only-use-last-value/
+          (function(ii){
+              x[ii].addEventListener('click',function(){
+                console.log(markers[ii].title);
+                populateInfoWindow(markers[ii], largeInfowindow);
+                console.log(viewModel.locations()[ii].location);
+                
+              });
+          })(i);
+
         }
 
         map.fitBounds(bounds);
@@ -78,10 +95,33 @@
             infowindow.setContent('<div>' + marker.title + '</div>');
             infowindow.open(map, marker);
             // make sure the marker property is cleared if the infowindow is closed
-            infowindow.addEventListener('closeclick',function(){
-              infowindow.setMarker(null);
-            });
+            // infowindow.addEventListener('closeclick',function(){
+            //   infowindow.setMarker(null);
+            // });
           }
         }
 
-      }
+
+
+        function InfoWindowWhenPressed(position){
+          var result = $.grep(markers, function(e){ return e.position === position });
+          console.log(result);
+
+        }
+
+        
+        // //https://blog.dmbcllc.com/why-does-javascript-loop-only-use-last-value/
+        // for(var i = 0;i < x.length;i++){
+        //     (function(ii){
+        //       x[ii].addEventListener('click',function(){
+        //         console.log($.grep(markers, function(e){ console.log(e.title); return e.position == viewModel.locations()[ii].location}));
+        //         console.log(viewModel.locations()[ii].location);
+                
+        //       });
+        //   })(i);
+        // }
+
+
+}
+
+
