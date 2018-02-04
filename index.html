@@ -29,8 +29,8 @@
       <div class="col-md-4" id="sidebar">
         <h5 style="color: white">My Locations</h5>
           <input type="text" size="18.5">
-          <ul data-bind="foreach: places">
-              <li><a href="#" data-bind="text: name" class="places-links"></a></li>
+          <ul data-bind="foreach: locations">
+              <li><a href="#" data-bind="text: title" class="places-links"></a></li>
           </ul>
       </div>
 
@@ -47,29 +47,29 @@
       sidebar.classList.toggle('open');
     }
 
-    // mmenuuuuuuuuuu
-    function Place(name,lat,lng) {
-      var self = this;
-      self.name = name;
-      self.lat = lat;
-      self.lng = lng;
-    }
+    // // mmenuuuuuuuuuu
+    // function Place(name,lat,lng) {
+    //   var self = this;
+    //   self.name = name;
+    //   self.lat = lat;
+    //   self.lng = lng;
+    // }
 
-    // Overall viewmodel for this screen, along with initial state
-    function PlaceViewModel() {
-      var self = this;  
+    // // Overall viewmodel for this screen, along with initial state
+    // function PlaceViewModel() {
+    //   var self = this;  
 
-      // Editable data
-      self.places = ko.observableArray([
-          new Place('Centeria Mall',24.698415, 46.683869),
-          new Place('Kingdom Tower',24.7114, 46.6744),
-          new Place('Burger Boutique',24.703426, 46.678498),
-          new Place('Jarir Bookstore',24.702556, 46.680667),
-          new Place('Aqariyah Plaza',24.708017, 46.678737)
-      ]);
-    }
+    //   // Editable data
+    //   self.places = ko.observableArray([
+    //       new Place('Centeria Mall',24.698415, 46.683869),
+    //       new Place('Kingdom Tower',24.7114, 46.6744),
+    //       new Place('Burger Boutique',24.703426, 46.678498),
+    //       new Place('Jarir Bookstore',24.702556, 46.680667),
+    //       new Place('Aqariyah Plaza',24.708017, 46.678737)
+    //   ]);
+    // }
 
-    ko.applyBindings(new PlaceViewModel());
+    // ko.applyBindings(new PlaceViewModel());
     </script>
 
  
