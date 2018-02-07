@@ -1,55 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-   <div class="container-fluid">
-
-    <div class="row row1">
-      <div class="col-md-12">
-        <div class="toggle-btn fas fa-bars" onclick="toggleSideBar()">
-        </div>
+   <head>
+      <title>Olaya Map</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class="row row1">
+            <div class="col-md-12">
+               <div class="toggle-btn fas fa-bars" onclick="toggleSideBar()">
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-4" id="sidebar">
+               <h5 class="side-bar-header">My Locations</h5>
+               <!-- ref: http://jsfiddle.net/zf5k9rxq/ -->
+               <input type="text" size="18" data-bind="textInput: query" autocomplete="off">
+               <ul data-bind='foreach: filteredLocations'>
+                  <li><a href="#" data-bind="text: title" class="places-links"></a></li>
+               </ul>
+            </div>
+            <div class="col-md-12">
+               <div id="map"></div>
+            </div>
+         </div>
       </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-4" id="sidebar">
-        <h5 style="color: white">My Locations</h5>
-          <input type="text" size="18.5">
-          <ul data-bind="foreach: locations">
-              <li><a href="#" data-bind="text: title" class="places-links"></a></li>
-          </ul>
-      </div>
-
-      <div class="col-md-12">
-        <div id="map"></div>
-      </div>
-    </div>
-
-   </div>
-    
-    <script>   
-      var sidebar = document.getElementById('sidebar');
-      function toggleSideBar() {
-        sidebar.classList.toggle('open');
-      }
+      <script>
+         var sidebar = document.getElementById('sidebar');
+         function toggleSideBar() {
+           sidebar.classList.toggle('open');
+         }
       </script>
       <script
-      src="http://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+         src="http://code.jquery.com/jquery-3.3.1.min.js"
+         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+         crossorigin="anonymous"></script>
       <script src="js/knockout.js"></script>
       <script src="js/script.js"></script>
       <script async defer
-      src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAfvIdEa3j5W7gRzRzEYnVMp6RMzlqmEAY&callback=initMap">
-    </script>
-
-</body>
+         src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAfvIdEa3j5W7gRzRzEYnVMp6RMzlqmEAY&callback=initMap"></script>
+   </body>
 </html>
