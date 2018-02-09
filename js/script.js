@@ -2,7 +2,6 @@ var placeLink = document.getElementsByClassName("places-links");
 var input = document.getElementsByClassName("input-field");
 var map;
 var marker;
-
 //ref for seach functionality: http://jsfiddle.net/zf5k9rxq/
 function ViewModel() {
   var self = this;
@@ -124,6 +123,9 @@ function ViewModel() {
   this.initMap();
 }
 
+function googleMapsError() {
+    alert('A problem accured while loading the map, please try again!');
+};
 //first method called
 function start() {
   ko.applyBindings(new ViewModel());
