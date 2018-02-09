@@ -4,16 +4,14 @@ var locations = [
         title: 'Versai Cafe',
         lat: 24.750266,
         lng: 46.652047,
-        type: 'Cafe',
-        wiki: ''
+        type: 'Cafe'
     },
     {
         id: 2,
         title: 'Hypermarket',
         lat: 24.752553,
         lng: 46.653060,
-        type: 'Supermarket',
-        wiki: ''
+        type: 'Supermarket'
     },
     {
         id: 3,
