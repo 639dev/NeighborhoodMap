@@ -46,14 +46,14 @@ function ViewModel() {
   };
 //this block call the previous block to open the infowindow of the clicked place from the list
   this.popup = function(marker) {
-    let info = new google.maps.InfoWindow();
+    var info = new google.maps.InfoWindow();
     self.populateInfoWindow(self.filteredLocations()[marker.id - 1].marker, info);
     self.filteredLocations()[marker.id - 1].marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout((function() {
       self.filteredLocations()[marker.id - 1].marker.setAnimation(null);
       info.close();
     }), 3000);
-  }
+  };
 //this block initilizes the map and its markers taking places info from locations.js
   this.initMap = function() {
     var bounds = new google.maps.LatLngBounds();
@@ -119,13 +119,13 @@ function ViewModel() {
 
     map.fitBounds(bounds);
 
-  }
+  };
   this.initMap();
 }
 
 function googleMapsError() {
     alert('A problem accured while loading the map, please try again!');
-};
+}
 //first method called
 function start() {
   ko.applyBindings(new ViewModel());
