@@ -55,4 +55,4 @@ var locations = [
         lng: 46.655269,
         type: 'Pharmacy'
     }
-]
+];
