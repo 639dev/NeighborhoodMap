@@ -68,3 +68,18 @@
 .row1 {
   background-color: #273c75;
 }
+
+
+.marker-title {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.marker-wiki {
+  list-style: none;
+  margin-left: 8px;
+}
+
+b {
+  margin-left: 8px;
+}
