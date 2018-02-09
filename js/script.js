@@ -18,11 +18,10 @@ function ViewModel() {
       });
     }
   });
-
+//this block make the ajax call for wikipedia and streetview apis then open infowindo for its marker
   this.populateInfoWindow = function(marker, infowindow) {
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      console.log(marker.title.replace(/\s+/, ""));
       var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title.replace(/\s+/, "") +
         '&format=json&callback=wikiCallback';
       $.ajax({
@@ -30,7 +29,7 @@ function ViewModel() {
         dataType: "jsonp",
         jsonp: "callback",
         success: function(response) {
-          var streetviewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=100x50&location=' + marker.title.replace(/\s+/, "") + '';
+          var streetviewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=100x50&location=' + marker.title + '';
           var articleList = response[1];
           articleStr = articleList[0];
           var url = 'http://en.wikipedia.org/wiki/' + articleStr;
@@ -46,17 +45,17 @@ function ViewModel() {
 
     }
   };
-
-  this.pop = function(marker) {
+//this block call the previous block to open the infowindow of the clicked place from the list
+  this.popup = function(marker) {
     let info = new google.maps.InfoWindow();
     self.populateInfoWindow(self.filteredLocations()[marker.id - 1].marker, info);
     self.filteredLocations()[marker.id - 1].marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout((function() {
       self.filteredLocations()[marker.id - 1].marker.setAnimation(null);
       info.close();
-    }).bind(self.filteredLocations()[marker.id - 1].marker), 3000);
+    }), 3000);
   }
-
+//this block initilizes the map and its markers taking places info from locations.js
   this.initMap = function() {
     var bounds = new google.maps.LatLngBounds();
     var highlightedIcon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
