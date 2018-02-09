@@ -11,7 +11,7 @@ var locations = [
         title: 'Hypermarket',
         lat: 24.752553,
         lng: 46.653060,
-        type: 'Supermarket'
+        type: 'Hypermarket'
     },
     {
         id: 3,

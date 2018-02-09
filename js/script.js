@@ -35,7 +35,7 @@ function ViewModel() {
           articleStr = articleList[0];
           var url = 'http://en.wikipedia.org/wiki/' + articleStr;
           marker.wiki = '<li class="marker-wiki"><a href="' + url + '">' + articleStr + '</a></li>';
-          infowindow.setContent('<div class="marker-title">' + marker.title + '</div>' + '<br/><b>More on Wikipedia</b> ' + marker.wiki + '<br>' + '<img class="bgimg" src="' + streetviewUrl + '">');
+          infowindow.setContent('<div class="marker-title">' + marker.title + '</div><br/><b>Type: </b>'+ self.locations()[marker.id].type + '<br/><b>More on Wikipedia</b> ' + marker.wiki + '<br>' + '<img class="bgimg" src="' + streetviewUrl + '">');
           infowindow.open(map, marker);
         },
         error: function() {
