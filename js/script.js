@@ -124,6 +124,7 @@ function ViewModel() {
   this.initMap();
 }
 
+//first method called
 function start() {
   ko.applyBindings(new ViewModel());
 }
