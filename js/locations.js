@@ -22,41 +22,34 @@ var locations = [
     },
     {
         id: 4,
-        title: 'Bodymaster',
-        lat: 24.756471,
-        lng: 46.652716,
-        type:  'Gym'
-    },
-    {
-        id: 5,
         title: 'Al_Tazaj',
         lat: 24.756023,
         lng: 46.656385,
         type: 'Restaurant'
     },
     {
-        id: 6,
+        id: 5,
         title: 'SUBWAY',
         lat: 24.755424,
         lng: 46.655980,
         type: 'Restaurant'
     },
     {
-        id: 7,
+        id: 6,
         title: 'Herfy',
         lat: 24.756031,
         lng: 46.657459,
         type: 'Restaurant',
     },
     {
-        id: 8,
+        id: 7,
         title: 'McDonalds',
         lat: 24.754839,
         lng: 46.654935,
         type: 'Restaurant'
     },
     {
-        id: 9,
+        id: 8,
         title: 'Nahdi',
         lat: 24.755033,
         lng: 46.655269,
