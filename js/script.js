@@ -1,5 +1,3 @@
-var placeLink = document.getElementsByClassName("places-links");
-var input = document.getElementsByClassName("input-field");
 var map;
 var marker;
 //ref for seach functionality: http://jsfiddle.net/zf5k9rxq/
@@ -79,8 +77,6 @@ function ViewModel() {
       styles: style
     });
 
-    this.largeInfowindow = new google.maps.InfoWindow();
-
     for (var i = 0; i < self.filteredLocations().length; i++) {
       var position = self.filteredLocations()[i].position;
       var title = self.filteredLocations()[i].title;
@@ -99,9 +95,6 @@ function ViewModel() {
       // create onclick EL to open infowindow at each marker
       google.maps.event.addListener(currentLocation.marker, 'click', function() {
         self.popup.call(self.filteredLocations()[this.id],self.filteredLocations()[this.id]);
-        setTimeout((function() {
-          self.largeInfowindow.close();
-        }), 2000);
       });
 
       google.maps.event.addListener(currentLocation.marker, 'mouseover', function() {
