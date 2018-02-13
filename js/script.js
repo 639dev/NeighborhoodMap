@@ -17,7 +17,6 @@ function ViewModel() {
       return self.locations();
     } else {
       return ko.utils.arrayFilter(self.locations(), function(loc) {
-
         if (loc.title.toLowerCase().indexOf(filter) !== -1) {
           loc.marker.setVisible(true);
         } else {
@@ -58,12 +57,12 @@ function ViewModel() {
   //this block call the previous block to open the infowindow of the clicked place from the list
   this.popup = function(marker) {
     var info = new google.maps.InfoWindow();
-    self.populateInfoWindow(self.filteredLocations()[marker.id - 1].marker, info);
-    self.filteredLocations()[marker.id - 1].marker.setAnimation(google.maps.Animation.BOUNCE);
+    self.populateInfoWindow(this.marker, info);
+    this.marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout((function() {
-      self.filteredLocations()[marker.id - 1].marker.setAnimation(null);
+      this.marker.setAnimation(null);
       info.close();
-    }), 3000);
+    }).bind(this), 3000);
   };
   //this block initilizes the map and its markers taking places info from locations.js
   this.initMap = function() {
@@ -99,7 +98,7 @@ function ViewModel() {
       bounds.extend(currentLocation.marker.position);
       // create onclick EL to open infowindow at each marker
       google.maps.event.addListener(currentLocation.marker, 'click', function() {
-        self.popup(self.filteredLocations()[this.id]);
+        self.popup.call(self.filteredLocations()[this.id],self.filteredLocations()[this.id]);
         setTimeout((function() {
           self.largeInfowindow.close();
         }), 2000);
