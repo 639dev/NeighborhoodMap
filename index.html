@@ -20,7 +20,7 @@
             <div class="col-md-4" id="sidebar">
                <h5 class="side-bar-header">My Locations</h5>
                <!-- ref: http://jsfiddle.net/zf5k9rxq/ -->
-               <input type="text" size="18" data-bind="textInput: query" autocomplete="off" id="input-field">
+               <input type="text" size="18" data-bind="textInput: query" autocomplete="off" id="input-field" placeholder="search">
                <ul data-bind='foreach: filteredLocations'>
                   <li><a href="#" data-bind="text: title, click: $parent.popup" class="places-links"></a></li>
                </ul>
@@ -44,7 +44,7 @@
       <script src="js/styles.js"></script>
       <script src="js/locations.js"></script>
       <script src="js/script.js"></script>
-      <script async defer
+      <script defer
          src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAfvIdEa3j5W7gRzRzEYnVMp6RMzlqmEAY&callback=start" 
          onerror="googleMapsError()"></script>
    </body>
