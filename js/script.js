@@ -56,12 +56,21 @@ function ViewModel() {
         }
     };
     //this block call the previous block to open the infowindow of the clicked place from the list
-    this.popup = function(marker) {
+    this.popup_location = function(loc) {
         var info = new google.maps.InfoWindow();
-        self.populateInfoWindow(this.marker, info);
-        this.marker.setAnimation(google.maps.Animation.BOUNCE);
+        self.populateInfoWindow(self.locations()[loc.id].marker, info);
+        self.locations()[loc.id].marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout((function() {
-            this.marker.setAnimation(null);
+            self.locations()[loc.id].marker.setAnimation(null);
+            info.close();
+        }), 3000);
+    };
+    this.popup_marker = function(marker) {
+        var info = new google.maps.InfoWindow();
+        self.populateInfoWindow(this, info);
+        this.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout((function() {
+            this.setAnimation(null);
             info.close();
         }).bind(this), 3000);
     };
@@ -80,10 +89,10 @@ function ViewModel() {
             styles: style
         });
 
-        for (var i = 0; i < self.filteredLocations().length; i++) {
-            var position = self.filteredLocations()[i].position;
-            var title = self.filteredLocations()[i].title;
-            var currentLocation = self.filteredLocations()[i];
+        for (let i = 0; i < self.filteredLocations().length; i++) {
+            let position = self.filteredLocations()[i].position;
+            let title = self.filteredLocations()[i].title;
+            let currentLocation = self.filteredLocations()[i];
             currentLocation.marker = new google.maps.Marker({
                 position: position,
                 map: map,
@@ -97,7 +106,7 @@ function ViewModel() {
             bounds.extend(currentLocation.marker.position);
             // create onclick EL to open infowindow at each marker
             google.maps.event.addListener(currentLocation.marker, 'click', function() {
-                self.popup.call(self.filteredLocations()[this.id], self.filteredLocations()[this.id]);
+                self.popup_marker.call(currentLocation.marker, currentLocation.marker);
             });
 
             google.maps.event.addListener(currentLocation.marker, 'mouseover', function() {
