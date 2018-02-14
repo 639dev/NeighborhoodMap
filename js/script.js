@@ -40,7 +40,7 @@ function ViewModel() {
                     var articleList = response[1];
                     articleStr = articleList[0];
                     if (articleStr) {
-                        var url = `http://en.wikipedia.org/wiki/' ${articleStr}`;
+                        var url = `http://en.wikipedia.org/wiki/${articleStr}`;
                         marker.wiki = `<li class="marker-wiki"><a href="${url}" >${articleStr}</a></li>`;
                     } else {
                         marker.wiki = "No informations found on Wikipedia!"

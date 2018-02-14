@@ -43,8 +43,8 @@ var locations = [
     },
     {
         id: 7,
-        title: 'Nahdi',
-        position: {lat: 24.755033,lng: 46.655269},
-        type: 'Pharmacy'
+        title: 'Panda Retail Company',
+        position: {lat: 24.753524,lng: 46.665429},
+        type: 'Market'
     }
 ];
