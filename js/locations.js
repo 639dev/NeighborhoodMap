@@ -1,9 +1,9 @@
 var locations = [
     {
         id: 1,
-        title: 'Versai Cafe',
-        position: {lat: 24.750266,lng: 46.652047},
-        type: 'Cafe'
+        title: 'Abdullah AlOthaim Markets',
+        position: {lat: 24.758366,lng: 46.663257},
+        type: 'Market'
     },
     {
         id: 2,
